@@ -7,6 +7,42 @@
         <link href="./CSS/style.css" type='text/css' rel='stylesheet'>
     </head>
     <body>
+      <header>
+        <div id="header-container">
+          <h1><span id="rock-span">Rock</span><span id="paper-span">Paper</span><span id="scissors-span">Scissors</span></h1>
+          <h3 id="round-Number">Round 1</h3>
+        </div>
+      </header>
+      <div id="game-box">
+        <div id="player-container" >
+          <h2>Player</h2>
+          <img class="game-images" src="./Images/rock.jpg" id="player-selection">
+          <div class="score" id="player-score">0</div>
+        </div>
+        <div id="computer-container">
+          <h2>Computer</h2>
+          <img class="game-images" src="./Images/rock.jpg" id="computer-selection">
+          <div class="score" id="computer-score">0</div>
+        </div>
+        <div class="clr-float"></div>
+        <div id="scoreboard">Scoreboard</div>
+      </div>
+      <div id="result"><h3>Make your move. Best of 5.</h3></div>
+      </div>
+      <div id="choices">
+        <div id="rock">
+          <img src="./Images/rock.jpg" alt="rock">
+        </div>
+        <div id="paper">
+          <img src="./Images/paper.jpg" alt="paper">
+        </div>
+        <div id="scissors">
+          <img src="./Images/scissors.jpg" alt="scissors">
+        </div>
+      </div>
+      <div id="restart">
+        <button id="restart">New Game</button>
+      </div>
       <script type='text/javascript' src='./JS/script.js'></script>
     </body>
 </html>
