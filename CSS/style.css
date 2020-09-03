@@ -23,7 +23,8 @@ HEADER
 
 h1 {
     padding: 10px;
-    font-size: 45px;;
+    font-size: 45px;
+    letter-spacing: 2px;
 }
 
 #rock-span {
@@ -72,6 +73,11 @@ h2 {
     height: 140px;
 }
 
+#computer-selection {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
 #computer-container {
     float: right;
     padding: 0px;
@@ -104,4 +110,39 @@ h3 {
     text-align: center;
     font-size: 20px;
 }
+
+/*
+Choices
+*/
+#choices {
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.images {
+    height: auto;
+    width: 25%;
+    opacity: 0.7;
+    display: inline-block;
+}
+
+.images:hover {
+    opacity: 1;
+}
+/*
+RESTART BUTTON
+*/
+#new-game-container {
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+#new-game {
+    width: 500px;
+    padding: 15px;
+}
+
+
+
 
