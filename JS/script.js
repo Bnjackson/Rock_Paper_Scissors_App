@@ -1,11 +1,119 @@
-/*Rock Paper Scissors - 
-Prompt asking for user choice.
-Computer choice randomised.
-Comnpare user and computer choices.
-Loop for 5 rounds 1 point for 1 win.
-Compare point totals declare winner.
+/*Rock Paper Scissors with UI using DOM manipulation
+The round number will change with each round up to 5 when a winner will be declared.
+Computer will generate random choice, player will make choice by clicking on one of three choices. 
+Compare player and computer choice declare a winner.
+Player and computer image will update based on what the player computer choice. 
+Scoreboard tracks the player and computers score.
+Result will display last round result.
+Player choice will be made by clicking on one of the 3 choices.
+After 5 rounds a button will appear to start a new game.
 */
 
+//Start game
+let newGame = document.getElementById('new-game');
+newGame.addEventListener('click', startGame);
+
+function startGame () { 
+    let result = document.getElementById('result-display');
+    result.innerText = 'Make your choice. It\'s best to 5.';
+    playerInput()
+}
+
+function playerInput () {
+    let choice = document.getElementsByClassName('images');
+    for (let i = 0; i < choice.length; i++) {
+        choice[i].addEventListener('click', playerChoice);
+        }
+        function playerChoice(e) {
+            if (e.target.classList.contains('rock')) {
+                let playerSelection = 'rock';
+                playRound();
+            }
+            else if (e.target.classList.contains('paper')){
+                let playerSelection = 'paper';
+                playRound();
+            }
+            else if (e.target.classList.contains('scissors')){
+                let playerSelection = 'scissors';
+                playRound();
+            }
+            else {
+                console.log('ERROR - Player Choice')
+            }
+        }
+        
+}
+
+
+//Computer choice 
+function computerChoice () {
+    let randomNumber = Math.floor(Math.random() * 3);
+    if (randomNumber === 0) {
+        return 'rock';
+    }
+    else if (randomNumber === 1) {
+        return 'paper';
+    }
+    else {
+        return 'scissors';
+    }
+}
+
+//Player choice
+
+
+//Compare computer and player choice 
+function playRound (playerSelection, computerSelection) {
+    if (playerSelection === computerSelection){
+        console.log('Draw')
+    }
+    else if (playerSelection === 'rock' && computerSelection === 'scissors'){
+        console.log('win')
+    }
+    else if (playerSelection === 'paper' && computerSelection === 'rock'){
+        console.log('win')
+    }
+    else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+        console.log('win')
+    }
+    else if (playerSelection === 'rock' && computerSelection === 'paper') {
+        console.log('lose')
+    }
+    else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+        console.log('lose')
+    }
+    else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+        console.log('lose')
+    }
+    else {
+        console.log('ERROR - Playround')
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 //Prompt asking for user choice
 function playerChoice() {
     return prompt('Rock, Paper, Scissors. Pick one.');
@@ -96,5 +204,4 @@ function game() {
         }
     } 
 }
-
-
+*/
