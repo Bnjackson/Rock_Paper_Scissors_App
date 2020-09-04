@@ -9,43 +9,8 @@ Player choice will be made by clicking on one of the 3 choices.
 After 5 rounds a button will appear to start a new game.
 */
 
-//Start game
-let newGame = document.getElementById('new-game');
-newGame.addEventListener('click', startGame);
-
-function startGame () { 
-    let result = document.getElementById('result-display');
-    result.innerText = 'Make your choice. It\'s best to 5.';
-    playerInput()
-}
-
-function playerInput () {
-    let choice = document.getElementsByClassName('images');
-    for (let i = 0; i < choice.length; i++) {
-        choice[i].addEventListener('click', playerChoice);
-        }
-        function playerChoice(e) {
-            if (e.target.classList.contains('rock')) {
-                let playerSelection = 'rock';
-                playRound();
-            }
-            else if (e.target.classList.contains('paper')){
-                let playerSelection = 'paper';
-                playRound();
-            }
-            else if (e.target.classList.contains('scissors')){
-                let playerSelection = 'scissors';
-                playRound();
-            }
-            else {
-                console.log('ERROR - Player Choice')
-            }
-        }
-        
-}
-
-
 //Computer choice 
+computerChoice();
 function computerChoice () {
     let randomNumber = Math.floor(Math.random() * 3);
     if (randomNumber === 0) {
@@ -59,37 +24,93 @@ function computerChoice () {
     }
 }
 
-//Player choice
+//playerchoice
+const playerRock = document.querySelector('.rock');
+playerRock.addEventListener('click', playRound, imageChange());
+const playerPaper = document.querySelector('.paper');
+playerPaper.addEventListener('click', playRound, imageChange());
+const playerScissors = document.querySelector('.scissors');
+playerScissors.addEventListener('click', playRound, imageChange());
 
+//playRound
+function playRound () {
+    let playerScore = 0;
+    let computerScore = 0;
+    let roundNumber = 1;
+    let playerSelection = this.className;
+    console.log(playerSelection);
+    let computerSelection = computerChoice();
+    console.log(computerSelection);
+    function computerImage () {
+        if (computerSelection === 'rock') {
+            document.getElementById('computer-selection').src = '/images/rock.jpg';
+        }
+        else if (computerSelection === 'paper') {
+            document.getElementById('computer-selection').src = '/images/paper.jpg';
+        }
+        else if (computerSelection === 'scissors') {
+            document.getElementById('computer-selection').src = '/images/scissors.jpg';
+        }
+    }
+    function roundResult () {
+        if (playerSelection === computerSelection) {
+            document.getElementById('result-display').innerText = 'Draw.';
+            roundNumber++;
+        }
+        else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+            document.getElementById('result-display').innerText = 'Rock beats scissors. You win this round!';
+            playerScore++;
+            roundNumber++;
+        }
+        else if (playerSelection === 'paper' && computerSelection === 'rock') {
+            document.getElementById('result-display').innerText = 'Paper beats scissors. You win this round!';
+            playerScore++;
+            roundNumber++;
+        }
+        else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+            document.getElementById('result-display').innerText = 'Scissors beat paper. You win this round!';
+            playerScore++;
+            roundNumber++;
 
-//Compare computer and player choice 
-function playRound (playerSelection, computerSelection) {
-    if (playerSelection === computerSelection){
-        console.log('Draw')
+        }
+        else if (computerSelection === 'rock' && playerSelection === 'scissors') {
+            document.getElementById('result-display').innerText = 'Rock beats scissors. You lose this round!';
+            computerScore++;
+            roundNumber++;
+        }
+        else if (computerSelection === 'paper' && playerSelection === 'rock') {
+            document.getElementById('result-display').innerText = 'Paper beats rock. You lose this round!';
+            computerScore++;
+            roundNumber++;
+        }
+        else if (computerSelection === 'scissors' && playerSelection === 'paper') {
+            document.getElementById('result-display').innerText = 'Scissors beat paper. You lose this round!';
+            computerScore++;
+            roundNumber++;
+        }
+        else {
+            console.log('ERROR - roundwinner');
+        }
     }
-    else if (playerSelection === 'rock' && computerSelection === 'scissors'){
-        console.log('win')
-    }
-    else if (playerSelection === 'paper' && computerSelection === 'rock'){
-        console.log('win')
-    }
-    else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        console.log('win')
-    }
-    else if (playerSelection === 'rock' && computerSelection === 'paper') {
-        console.log('lose')
-    }
-    else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        console.log('lose')
-    }
-    else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        console.log('lose')
-    }
-    else {
-        console.log('ERROR - Playround')
+    computerImage();
+    roundResult();
 
-    }
 }
+
+//IMAGE CHANGE
+function imageChange() {
+    const playerRock = document.querySelector('.rock');
+    playerRock.addEventListener('click', () => {
+        document.getElementById('player-selection').src = '/images/rock.jpg'});
+    const playerPaper = document.querySelector('.paper');
+    playerPaper.addEventListener('click', () => {
+        document.getElementById('player-selection').src = '/images/paper.jpg'});
+    const playerScissors = document.querySelector('.scissors');
+    playerScissors.addEventListener('click', () => {
+        document.getElementById('player-selection').src = '/images/scissors.jpg'});
+}
+
+
 
 
 
