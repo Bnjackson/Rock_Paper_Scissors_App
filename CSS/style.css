@@ -39,7 +39,7 @@ h1 {
     color: #ffe600;
 }
 
-#header-container h3  {
+#header-container h3 span  {
     font-size: 23px;
     margin-bottom: 10px;
 }
@@ -142,7 +142,3 @@ RESTART BUTTON
     width: 500px;
     padding: 15px;
 }
-
-
-
-
